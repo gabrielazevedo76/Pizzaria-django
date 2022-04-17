@@ -1,0 +1,74 @@
+{% extends 'App/base.html' %} {% block title %}Order{% endblock title %}
+
+{%block content %}
+
+<div class="container d-flex justify-content-center align-items-center">
+  <div
+    class="flavour-wrapper mt-5"
+    style="width: 40%; border-radius: 5px !important;"
+  >
+    <div class="img-flavour" style="max-width: 100%">
+      <img
+        src="{{flavour.cover.url}}"
+        alt="{{flavour.name}}"
+        class="d-block"
+        style="width: 100%; margin: 0 auto"
+      />
+    </div>
+
+    <form method="POST" class="form-container m-3">
+        {% csrf_token %}
+      <div class="mb-3">
+        <label for="nameInput" class="form-label"
+          >Nome:</label
+        >
+        <input
+          type="text"
+          class="form-control"
+          id="nameInput"
+          name="nameInput"
+          placeholder="ex: Gabriel Almeida"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="emailInput" class="form-label"
+          >Email:</label
+        >
+        <input
+          type="email"
+          class="form-control"
+          id="emailInput"
+          name="emailInput"
+          placeholder="email@example.com"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="tamanhoInput" class="form-label"
+          >Tamanho</label
+        >
+        <select class="form-select" name="tamanhoInput" aria-label="Default select example">
+            <option value="Small">Pequena</option>
+            <option value="Medium" selected>Média</option>
+            <option value="Large">Grande</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="obsInput" class="form-label"
+          >Obs:</label
+        >
+        <textarea
+          class="form-control"
+          id="obsInput"
+          name="obsInput"
+          rows="3"
+        ></textarea>
+      </div>
+        <div class="d-flex justify-content-between">
+        <h5>R${{flavour.price}}</h5>
+        <button type="submit" class="btn btn-light btn-outline-dark">Finalizar</a>
+        </div>
+    </form>
+  </div>
+</div>
+
+{% endblock content %}
